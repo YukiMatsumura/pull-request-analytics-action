@@ -775,7 +775,12 @@ async function main() {
     const markdown = (0, view_1.createMarkdown)(preparedData);
     core.setOutput("MARKDOWN", markdown);
     console.log("Markdown successfully generated.");
-    // createIssue(markdown);
+    const createIssueFlag = core.getInput("CREATE_ISSUE") ||
+        process.env.CREATE_ISSUE ||
+        `true`;
+    if (createIssueFlag === "true") {
+        (0, requests_1.createIssue)(markdown);
+    }
 }
 main();
 
