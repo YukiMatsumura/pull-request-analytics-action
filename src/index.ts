@@ -69,8 +69,9 @@ async function main() {
   core.setOutput("JSON_COLLECTION", JSON.stringify(preparedData));
   console.log("Calculation complete. Generating markdown.");
   const markdown = createMarkdown(preparedData);
+  core.setOutput("MARKDOWN", markdown);
   console.log("Markdown successfully generated.");
-  createIssue(markdown);
+  // createIssue(markdown);
 }
 
 main();
